@@ -13,21 +13,25 @@ import java.util.ArrayList;
 /**
  * Created by léo on 13/04/2015.
  */
-public class CalendarItem extends BaseAdapter {
+public class DayItem extends BaseAdapter {
 
     private Context context;
-    //private ArrayList<String> values;
+    /*private String[] values = {
+            "Lun.","Mar.","Mer.","Jeu.","Ven.","Sam.","Dim."
+    };*/
+    private ArrayList<String> values;
 
-    public CalendarItem(Context c)
+    public DayItem(Context c)
     {
         this.context = c;
-        /*values = new ArrayList<String>();
-        values.add();
-        values.add();
-        values.add();
-        values.add();
-        values.add();
-        values.add();*/
+        values = new ArrayList<String>();
+        values.add("Lun.");
+        values.add("Mar.");
+        values.add("Mer.");
+        values.add("Jeu.");
+        values.add("Ven.");
+        values.add("Sam.");
+        values.add("Dim.");
     }
 
     @Override
@@ -46,13 +50,14 @@ public class CalendarItem extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup)
+    public View getView(int position, View view, ViewGroup viewGroup)
     {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View item = inflater.inflate(R.layout.item_calendrier, viewGroup, false);
-        TextView numJ = (TextView) item.findViewById(R.id.NumJ);
-        //numJ.setText(values.get(i));
-        return null;
+        View item = inflater.inflate(R.layout.item_day, viewGroup, false);
+        TextView tv = (TextView) item.findViewById(R.id.Day);
+        tv.setText(values.get(position));
+
+        return item;
     }
 
     public View setSelected(View view)

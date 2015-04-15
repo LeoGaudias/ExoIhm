@@ -56,9 +56,17 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        CalendarItem ad = new CalendarItem(this);
+        DayItem di = new DayItem(getApplicationContext());
+        GridView dayGrid = (GridView) findViewById(R.id.GridDay);
+        dayGrid.setAdapter(di);
+        GridView gridCal = (GridView) findViewById(R.id.GridCal);
+        gridCal.setAdapter(di);
+
+        /*
+        CalendarItem ad = new CalendarItem(getApplicationContext());
         GridView gridCal = (GridView) findViewById(R.id.GridCal);
         gridCal.setAdapter(ad);
+        */
     }
 
     public void setPreviousMonth()
